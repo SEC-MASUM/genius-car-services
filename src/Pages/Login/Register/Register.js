@@ -11,11 +11,16 @@ const Register = () => {
 
   const handleRegister = (event) => {
     event.preventDefault();
-    const name = nameRef.current.value;
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
-    const confirmPassword = confirmPasswordRef.current.value;
-    console.log(email, password);
+    // const name = nameRef.current.value;
+    // const email = emailRef.current.value;
+    // const password = passwordRef.current.value;
+    // const confirmPassword = confirmPasswordRef.current.value;
+    // ------------ or------------------
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    const confirmPassword = event.target.confirmPassword.value;
+    console.log(name, email, password, confirmPassword);
   };
   const navigateToLogin = () => {
     navigate("/login");
@@ -26,12 +31,18 @@ const Register = () => {
       <Form onSubmit={handleRegister}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Your Name</Form.Label>
-          <Form.Control ref={nameRef} type="text" placeholder="Enter Name" />
+          <Form.Control
+            ref={nameRef}
+            name="name"
+            type="text"
+            placeholder="Enter Name"
+          />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
             ref={emailRef}
+            name="email"
             type="email"
             placeholder="Enter email"
             required
@@ -45,6 +56,7 @@ const Register = () => {
           <Form.Label>Password</Form.Label>
           <Form.Control
             ref={passwordRef}
+            name="password"
             type="password"
             placeholder="Password"
             required
@@ -54,6 +66,7 @@ const Register = () => {
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
             ref={confirmPasswordRef}
+            name="confirmPassword"
             type="password"
             placeholder="Confirm Password"
             required
